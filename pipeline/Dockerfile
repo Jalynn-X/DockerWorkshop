@@ -21,10 +21,12 @@ RUN uv sync --locked
 # e.g. the --dev pgcli, the dev dependencies are dependencies needed for development
 # we need pgcli to interact with development environment, but not in production, so we use --dev
 
-# this is copy from the host to the docker image
-COPY pipeline.py .
+# # this is copy from the host to the docker image
+# COPY pipeline.py .
+COPY ingest_data.py .
 
 # uv → the executable
 # "run" "python" "pipeline.py" → arguments passed to uv
 # ENTRYPOINT ["uv", "run", "python", "pipeline.py"]
-ENTRYPOINT ["python", "pipeline.py"]
+ENTRYPOINT ["python", "ingest_data.py"]
+
